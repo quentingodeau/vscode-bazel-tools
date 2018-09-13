@@ -22,7 +22,8 @@ export async function bzlRunCommandFromShell(cmd_args: string) {
     
     let bazelExecutablePath = Workspace.getConfiguration("bazel").get<string>("executablePath");
     return child_proc.exec(`"${bazelExecutablePath}" ${cmd_args}`, {
-        'cwd': ws_path
+        'cwd': ws_path,
+        'maxBuffer': Infinity
     });
 }
 
